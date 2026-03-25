@@ -1,0 +1,281 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* ── Custom global styles ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #0C1628;
+  color: #E8EEF6;
+  font-family: 'Crimson Pro', Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Arabic text */
+[lang="ar"], .arabic, .font-arabic {
+  font-family: 'Amiri', serif;
+  direction: rtl;
+}
+
+/* Progress bar at top */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #E0B84A, #F5D06A, #E0B84A);
+  z-index: 9999;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 8px rgba(224, 184, 74, 0.6);
+}
+
+/* Panel grid perspective */
+.panel-grid {
+  perspective: 1200px;
+}
+
+/* 3D panel card */
+.panel-card {
+  transform-style: preserve-3d;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+  will-change: transform;
+}
+
+.panel-card:hover {
+  transform: rotateX(-1deg) rotateY(0.5deg) translateZ(4px) scale(1.015);
+}
+
+/* Panel header animated gradient sweep */
+@keyframes headerSweep {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.panel-header-bg {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(224, 184, 74, 0.04) 30%,
+    rgba(34, 211, 238, 0.06) 50%,
+    rgba(224, 184, 74, 0.04) 70%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: headerSweep 8s linear infinite;
+}
+
+/* Finding badge pulse — once */
+@keyframes badgePulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.12); opacity: 0.85; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.badge-pulse {
+  animation: badgePulse 0.6s ease-out 0.2s 1;
+}
+
+/* Tab transitions */
+.tab-panel-enter {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.tab-panel-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.tab-panel-exit {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Back to top button */
+#back-to-top {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 500;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #E0B84A, #9A6E1A);
+  color: #0C1628;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(224, 184, 74, 0.4);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+}
+
+#back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+#back-to-top:hover {
+  filter: brightness(1.15);
+  transform: translateY(-2px);
+}
+
+/* Spin animation — respects reduced-motion */
+@keyframes spin14 {
+  from { transform-origin: 400px 400px; transform: rotate(0deg); }
+  to   { transform-origin: 400px 400px; transform: rotate(360deg); }
+}
+@keyframes pulseCore {
+  0%, 100% { opacity: 0.7; }
+  50%       { opacity: 1; }
+}
+@keyframes traceArc {
+  0%   { stroke-dashoffset: 600; }
+  100% { stroke-dashoffset: 0; }
+}
+
+.spin14 {
+  animation: spin14 120s linear infinite;
+}
+.pulse-core {
+  animation: pulseCore 3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spin14 { animation: none; }
+  .pulse-core { animation: none; opacity: 0.85; }
+}
+
+/* Arabic summary frosted box */
+.arabic-summary-box {
+  background: rgba(224, 184, 74, 0.06);
+  border-left: 3px solid #E0B84A;
+  border-radius: 0 8px 8px 0;
+  padding: 6px 10px 6px 12px;
+  margin: 8px 0;
+  direction: rtl;
+  text-align: right;
+  font-family: 'Reem Kufi', 'Amiri', serif;
+  font-size: 14px;
+  color: rgba(224, 184, 74, 0.9);
+  line-height: 1.6;
+  border-bottom: 1px solid rgba(224, 184, 74, 0.15);
+}
+
+@media (max-width: 768px) {
+  .arabic-summary-box {
+    font-size: 13px;
+  }
+}
+
+/* Tab 3D extruded active indicator */
+.tab-active-3d {
+  box-shadow:
+    0 1px 0 #E0B84A,
+    0 2px 0 #C49A35,
+    0 3px 0 #A87E20,
+    0 4px 6px rgba(0,0,0,0.5);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #0C1628; }
+::-webkit-scrollbar-thumb { background: #2A4060; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3A5A80; }
+
+/* Focus visible */
+:focus-visible {
+  outline: 2px solid #E0B84A;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Loading screen */
+#loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: #0C1628;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+@keyframes loadingFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes loadingProgress {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+@keyframes logoGlow {
+  0%, 100% { filter: drop-shadow(0 0 12px rgba(224,184,74,0.4)); }
+  50%       { filter: drop-shadow(0 0 28px rgba(224,184,74,0.8)); }
+}
+
+@keyframes screenFadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+.logo-glow {
+  animation: logoGlow 2s ease-in-out infinite;
+}
+
+.loading-text-1 { animation: loadingFadeIn 0.6s ease forwards 0.3s; opacity: 0; }
+.loading-text-2 { animation: loadingFadeIn 0.6s ease forwards 0.7s; opacity: 0; }
+
+#loading-bar-fill {
+  animation: loadingProgress 1.5s ease-out forwards;
+  height: 100%;
+  background: linear-gradient(90deg, #E0B84A, #F5D06A, #E0B84A);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(224,184,74,0.6);
+}
+
+/* Particle field */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: #E0B84A;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+/* Tab count badge on hover */
+.tab-btn:hover .tab-count-badge {
+  opacity: 1;
+}
+.tab-count-badge {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+/* Shimmer */
+@keyframes shimmer {
+  100% { transform: translateX(200%); }
+}

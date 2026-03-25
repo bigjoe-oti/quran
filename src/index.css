@@ -168,8 +168,8 @@ body {
 /* Arabic summary frosted box */
 .arabic-summary-box {
   background: rgba(224, 184, 74, 0.06);
-  border-left: 3px solid #E0B84A;
-  border-radius: 0 8px 8px 0;
+  border: 1.5px solid rgba(224, 184, 74, 0.55);
+  border-radius: 8px;
   padding: 6px 10px 6px 12px;
   margin: 8px 0;
   direction: rtl;
@@ -178,7 +178,6 @@ body {
   font-size: 14px;
   color: rgba(224, 184, 74, 0.9);
   line-height: 1.6;
-  border-bottom: 1px solid rgba(224, 184, 74, 0.15);
 }
 
 @media (max-width: 768px) {

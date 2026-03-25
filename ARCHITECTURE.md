@@ -1,22 +1,48 @@
 # Architecture and Scope
 
 ## System Architecture
-The Quran Muqattaat Analysis platform is built upon a deterministic **Data-Driven Architecture (DDA)**. It completely eschews runtime calculations or server-side rendering for its core mathematical findings. Instead, the entire dataset (spanning all letters and surahs of the Quran) was strictly pre-processed into hardcoded cryptographic matrices and JSON payloads. 
+
+The Quran Muqattaat Analysis platform is built upon a deterministic **Data-Driven Architecture (DDA)**. It completely eschews runtime calculations or server-side rendering for its core mathematical findings. Instead, the entire dataset (spanning all letters and surahs of the Quran) was strictly pre-processed into hardcoded cryptographic matrices and JSON payloads.
 
 These payloads are injected directly into a **React 18** client operating on **Vite 6** via specialized custom hooks. The UI rendering utilizes bespoke inline SVGs manipulated via rigorous React coordinate math, isolating the visual layer from heavy DOM-reflow dependency libraries like D3.js or Recharts for its most complex anatomical visualizations (e.g., Mahalanobis Scatter, Concentric Master Topology, and the Makhraj matrix).
 
+## Application Navigation Architecture
+
+```mermaid
+graph TD
+    App["Al-Quran Muqattaat Engine"]
+    
+    App --> T0["◎ Master Topology"]
+    App --> T1["⬡ Geometry & Constants"]
+    App --> T2["⚡ Anomalies & Clusters"]
+    App --> T3["↗ Orthogonal Spikes"]
+    App --> T4["∞ Prime Networks"]
+    App --> T5["≈ Systemic Stability"]
+    
+    App --> T6["◈ Dimensional Topology"]
+    App --> T7["⌁ Phonetic Architecture"]
+    App --> T8["⟡ Intertextual Bridge"]
+    App --> T9["◉ Phase 2 Findings"]
+    App --> T10["ح Al-Hawamim Heritage"]
+    App --> T11["≋ Frequencies & Effect"]
+```
+
 ## Scope of Analysis
+
 The application's scope is strictly confined to the 14 Arabic letters that comprise the "Muqattaat" (Initiatory/Disjoined letters). It visually extrapolates and verifies 31 distinct findings spanning:
-- Transcendent Statistical Constants ($e$, $\pi$, $\phi$)
+
+- Transcendent Statistical Constants (e, pi, phi)
 - The 16 Classical Makhraj (Sibawayhi Phonetics ~786 CE)
 - Multi-dimensional Principal Component Analysis (14D vector space)
 - Fibonacci Sequence Prime structures
 - Intertextual bridges and Syntactic Sequence Topologies
 
 ## LLM Generation & Collaboration
-This project represents a highly sophisticated collaborative engineering effort utilizing a specialized cascade of advanced Large Language Models (LLMs) to construct both the deterministic mathematical arrays and the complex SVG frontend architecture. 
+
+This project represents a highly sophisticated collaborative engineering effort utilizing a specialized cascade of advanced Large Language Models (LLMs) to construct both the deterministic mathematical arrays and the complex SVG frontend architecture.
 
 The models utilized to engineer this project include:
+
 - **Claude Sonnet 4.6**
 - **Claude Opus 4.6**
 - **DeepSeek V3.2**

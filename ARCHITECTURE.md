@@ -12,19 +12,24 @@ These payloads are injected directly into a **React 18** client operating on **V
 graph TD
     App["Al-Quran Muqattaat Engine"]
     
-    App --> T0["◎ Master Topology"]
-    App --> T1["⬡ Geometry & Constants"]
-    App --> T2["⚡ Anomalies & Clusters"]
-    App --> T3["↗ Orthogonal Spikes"]
-    App --> T4["∞ Prime Networks"]
-    App --> T5["≈ Systemic Stability"]
-    
-    App --> T6["◈ Dimensional Topology"]
-    App --> T7["⌁ Phonetic Architecture"]
-    App --> T8["⟡ Intertextual Bridge"]
-    App --> T9["◉ Phase 2 Findings"]
-    App --> T10["ح Al-Hawamim Heritage"]
-    App --> T11["≋ Frequencies & Effect"]
+    App --> G1["Phase 1: Foundational Topology"]
+    App --> G2["Phase 2: Deep Systemic Structure"]
+    App --> G3["Phase 3: Heritage & Synthesis"]
+
+    G1 --> T0["◎ Master Topology"]
+    G1 --> T1["⬡ Geometry & Constants"]
+    G1 --> T2["⚡ Anomalies & Clusters"]
+    G1 --> T3["↗ Orthogonal Spikes"]
+
+    G2 --> T4["∞ Prime Networks"]
+    G2 --> T5["≈ Systemic Stability"]
+    G2 --> T6["◈ Dimensional Topology"]
+    G2 --> T7["⌁ Phonetic Architecture"]
+
+    G3 --> T8["⟡ Intertextual Bridge"]
+    G3 --> T9["◉ Phase 2 Findings"]
+    G3 --> T10["ح Al-Hawamim Heritage"]
+    G3 --> T11["≋ Frequencies & Effect"]
 ```
 
 ## Scope of Analysis

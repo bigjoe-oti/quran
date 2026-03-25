@@ -1,69 +1,105 @@
-# Quran Muqattaat Analysis (الحروف المقطعة)
+# Quran Muqattaat Analysis — الحروف المقطعة
 
-A production-ready, high-performance web application designed for the deterministic mathematical analysis of the Quran's initiatory letters (Al-Muqatta'at).
+A production-ready, high-performance web application for the deterministic mathematical analysis of the Quran's 14 initiatory letters (Al-Muqatta'at).
 
-This project explores the mathematical, phonetic, and statistical architecture embedded within the 29 chapters of the Quran that open with the 14 "disjoined letters". The platform visualizes 31 deterministic, peer-reviewed, and mathematically verifiable findings—free from numerological adjustments, selective counting, or arbitrary rules.
+The platform visualises **35 verifiable findings** across 13 analytical tabs — free from numerological adjustments, selective counting, or arbitrary rules. Every data point traces directly to a peer-reviewed source or a reproducible computational engine.
 
 ---
 
-## 🌟 Core Features & Visualizations
+## 🌟 Core Features
 
-- **Topological Data Visualization**: Featuring 8 bespoke SVG-based charts including Principal Component Analysis (PCA) cluster scatters, 14-dimensional Mahalanobis distance plotting, and contingency tables (Fisher Exact tracking).
-- **Phonetic Architecture Engine**: Visualizes the exhaustive enumeration of all **40,116,600** possible subsets ($C(28,14)$) of the Arabic alphabet against the 16 Classical Makhraj (Sibawayhi, ~786 CE).
-- **Interactive Master Topology (`MasterCanvas`)**: A mathematically constrained concentric ring map unifying the 14 letters, 29 Surahs, physiological resonance, and transcendental symmetries.
-- **Bilingual Interface Mapping**: Deep synchronization of deterministic English and Arabic `Reem Kufi` typographies side-by-side.
-- **Deep Manuscript Aesthetics**: The UI uses a deep `#0C1628` sapphire foundation layered with gold and cyan lighting accents (`drop-shadow` filters, glassmorphism bounding).
+- **Interactive Master Topology** (`MasterCanvas`): A mathematically constrained concentric ring map unifying the 14 letters, 29 Surahs, physiological resonance, and transcendental symmetries.
+- **Phonetic Architecture Engine**: Exhaustive enumeration of all **40,116,600** possible 14-letter subsets ($C(28,14)$) of the Arabic alphabet against the 16 Classical Makhraj (Sibawayhi, ~786 CE).
+- **Computational Analysis Engine** *(new — Phase 2)*: Four data-driven modules backed by live Python engine executions:
+  - `rasm_checksum.py` — 331,259-character 28-letter Rasm Uthmani frequency matrix
+  - `pca_muqattaat.py` — PCA eigenvector analysis (114 × 14, scikit-learn)
+  - `spatial_fft.py` — Spatial FFT periodicity detection (scipy.fft, 4-sigma threshold)
+- **Bilingual Interface**: Deep synchronisation of English and Arabic (`Reem Kufi`) typographies across all 35 panels.
+- **Deep Manuscript Aesthetics**: Sapphire `#0C1628` foundation with gold/cyan lighting, drop-shadow SVG filters, and glassmorphism bounding.
 
 ---
 
 ## 🚀 Technology Stack
 
-- **Frontend Core**: React 18, Vite 6
-- **Architecture**: Component-based Data-Driven Architecture (DDA) rendering React inline SVG engines.
-- **Styling**: Tailwind CSS v3 intertwined with complex vanilla post-CSS utilities.
-- **Data Handling**: Hardcoded JSON matrices mapped to high-grade statistical findings without API latency.
-- **Typography**: 
-  - *Righteous* (Header displays)
-  - *Advent Pro* (English contextual body text)
-  - *Reem Kufi* (Arabic native fonts)
-  - *Crimson Pro* (Base inherited serif)
+| Layer | Technology |
+|---|---|
+| Frontend | React 18, Vite 6 |
+| Architecture | Modular DDA — decoupled components, constants, utils, context |
+| Styling | Vanilla CSS + Tailwind CSS v3 utility layer |
+| Data | Hardcoded precision matrices from Python engines (zero API latency) |
+| Analytics | Python 3 · NumPy · scikit-learn · SciPy · xml.etree |
+| Deployment | Vercel (auto-deploy on `main` push) + Vercel Analytics |
+| Typography | Righteous · Advent Pro · Reem Kufi · Crimson Pro |
+
+---
+
+## 📁 Project Architecture
+
+```
+src/
+├── App.jsx                     # Root shell, tab router, panel grid
+├── index.css                   # Design system, animations, theme tokens
+├── main.jsx                    # Entry point + Vercel Analytics
+├── components/
+│   ├── Defs.jsx                # Global SVG filter/gradient definitions
+│   ├── MasterCanvas.jsx        # Master Topology concentric ring viz
+│   ├── MiscCharts.jsx          # ~18 specialised SVG chart components
+│   ├── AnalyticsCharts.jsx     # 4 Computational Analysis viz (Phase 2)
+│   ├── ControlChart.jsx        # Statistical control chart
+│   ├── OutlierBarChart.jsx     # Outlier-highlighting bar chart
+│   ├── ExactPolygon.jsx        # Regular polygon calculator viz
+│   ├── AdvancedRadar.jsx       # Qaf/Nun radar chart
+│   └── RotatingCuboctahedron.jsx  # Animated 3D cuboctahedron
+├── constants/
+│   ├── data.jsx                # All data constants (T, MUQLETT, PANELS data,
+│   │                           #   LETTER_FREQ_DATA, ENTROPY_DATA, PCA_DATA,
+│   │                           #   FFT_DATA, MAHAL_PCAX/Y, etc.)
+│   └── panels.jsx              # PANELS array (35 items) + TABS definition
+├── context/
+│   └── TooltipContext.jsx      # Global tooltip state provider
+└── utils/
+    └── math.js                 # polar, stats, fmt, clamp, toRad, e, phi, pi, C, Q
+```
 
 ---
 
 ## 📦 Local Deployment
 
-1. **Clone the Repository**:
-   ```bash
-   git clone [repo_url]
-   cd quran
-   ```
+```bash
+git clone https://github.com/bigjoe-oti/quran
+cd quran
+npm install
+npm run dev          # Development server → localhost:5173
+npm run build        # Production bundle
+```
 
-2. **Install Dependencies**:
-   ```bash
-   npm install
-   ```
+### Python Analysis Engines (optional, for data regeneration)
 
-3. **Run Development Interface**:
-   ```bash
-   npm run dev
-   ```
-
-4. **Execute Production Build**:
-   ```bash
-   npm run build
-   ```
+```bash
+pip install numpy scikit-learn scipy
+python3 rasm_checksum.py    # 28-letter corpus matrix + Shannon entropy
+python3 pca_muqattaat.py    # PCA eigenvector segregation analysis
+python3 spatial_fft.py      # Spatial FFT periodicity detection
+```
 
 ---
 
-## 📐 Intellectual Scope
+## 📐 Analytical Scope — 35 Findings, 13 Tabs
 
-The application covers 31 core analytical angles grouped into profound topological layers:
+| Phase | Tabs | Panels | Focus |
+|---|---|---|---|
+| **Phase 1** | Master Topology → Orthogonal Spikes | 0–8 | Geometry, constants, anomalies, statistical outliers |
+| **Phase 2** | Prime Networks → Frequencies & Effect | 9–30 | Systemic stability, phonetics, heritage, EEG evidence |
+| **Phase 3** | Computational Analysis *(new)* | 31–34 | Rasm entropy, PCA eigenvectors, FFT spatial periodicity |
 
-1. **Mathematical Baselines**: Convergence points mapping precise standard deviations spanning the $2.0 \cdot 10^7$ letter dataset.
-2. **Intertextual Bridges**: Tracking the "Tanzil/Book/Revelation" occurrences directly adjacent to Muqattaat openings (Fisher Exact $p = 6.03 \cdot 10^{-10}$).
-3. **Heritage meets Computation**: Transposing the classical Tafsir (Ibn Kathir, Al-Nashr) onto modern empirical frameworks.
+### Phase 3 — Computational Analysis Modules
 
-See `ARCHITECTURE.md` for details surrounding the scope and LLM generation metadata.
+| Module | Finding | Key Result |
+|---|---|---|
+| **الجدول الكبير** — Macro-Ledger | 28-letter frequency census | 14 Muqattaat letters = 63.4% of 331,259-char corpus |
+| **خريطة الكثافة** — Entropy Heatmap | Shannon entropy per surah | Muqattaat μ = 4.042 vs 3.982 bits/char (+0.060 Δ) |
+| **الحمض النووي** — PCA Structural DNA | Eigenvector segregation | Centroid distance = **1.3651σ** (2.73× significance threshold) |
+| **الدورية المكانية** — Spatial FFT | Periodic signal detection | Nun (ن) at **16.97σ**, period = entire corpus (335,623 chars) |
 
 ---
 

@@ -144,6 +144,10 @@ body {
   from { transform-origin: 400px 400px; transform: rotate(0deg); }
   to   { transform-origin: 400px 400px; transform: rotate(360deg); }
 }
+@keyframes spin14-reverse {
+  from { transform-origin: 400px 400px; transform: rotate(360deg); }
+  to   { transform-origin: 400px 400px; transform: rotate(0deg); }
+}
 @keyframes pulseCore {
   0%, 100% { opacity: 0.7; }
   50%       { opacity: 1; }
@@ -154,14 +158,17 @@ body {
 }
 
 .spin14 {
-  animation: spin14 120s linear infinite;
+  animation: spin14 114s linear infinite; /* Total Surahs */
+}
+.spin14-reverse {
+  animation: spin14-reverse 29s linear infinite; /* Muqattaat Surahs */
 }
 .pulse-core {
   animation: pulseCore 3s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .spin14 { animation: none; }
+  .spin14, .spin14-reverse { animation: none; }
   .pulse-core { animation: none; opacity: 0.85; }
 }
 

@@ -48,8 +48,12 @@ export const MasterCanvas = () => {
               @keyframes spin14 { from{transform-origin:500px 500px;transform:rotate(0deg)} to{transform-origin:500px 500px;transform:rotate(360deg)} }
               @keyframes pulseCore { 0%,100%{opacity:.75} 50%{opacity:1} }
               @keyframes traceArc  { 0%{stroke-dashoffset:600} 100%{stroke-dashoffset:0} }
+              @keyframes blinkNode { 0%,100%{opacity:0.5;} 50%{opacity:0.95;} }
               .spin14 { animation: spin14 160s linear infinite; }
               .pulse-core { animation: pulseCore 4s ease-in-out infinite; }
+              .blink-node-1 { animation: blinkNode 6s ease-in-out infinite; }
+              .blink-node-2 { animation: blinkNode 8s ease-in-out infinite 2s; }
+              .blink-node-3 { animation: blinkNode 10s ease-in-out infinite 1s; }
             `}</style>
 
             {/* ── Ambient background ──────────────────────────────── */}
@@ -87,6 +91,7 @@ export const MasterCanvas = () => {
                   <circle cx={p.x} cy={p.y} r={isMuq?16:8}
                           fill={isMuq?T.gold:T.muted}
                           opacity={isMuq?1:0.35}
+                          className={isMuq ? `blink-node-${(i%3)+1}` : ""}
                           style={isMuq?{filter:`drop-shadow(0 0 8px ${T.gold})`}:{}}/>
                   {isMuq && (
                     <text x={p.x} y={p.y+6} fill={T.bg} fontSize="14"
@@ -203,6 +208,7 @@ export const MasterCanvas = () => {
                   <circle cx={p.x} cy={p.y} r={r2}
                           fill={col}
                           opacity={isHM||isS19||isS50||isS68?1:0.7}
+                          className={`blink-node-${(i%3)+1}`}
                           style={{filter:isHM?`drop-shadow(0 0 10px ${T.blue})`:
                                          isS50||isS19?`drop-shadow(0 0 10px ${T.red})`:
                                          isS68?`drop-shadow(0 0 10px ${T.blue})`:'none'}}/>
@@ -243,20 +249,23 @@ export const MasterCanvas = () => {
             {/* ══════════════════════════════════════════════════════
                 RING D — 14-gon inner structure (r=185)
             ════════════════════════════════════════════════════════ */}
-            <polygon
-              points={Array.from({length:14},(_,i)=>{
-                const p = polar(cx,cy,185,i*360/14);
-                return `${p.x.toFixed(1)},${p.y.toFixed(1)}`;
-              }).join(' ')}
-              fill="rgba(192,132,252,0.06)" stroke={T.purple}
-              strokeWidth="2.5" opacity=".85"/>
-            {/* 14-gon vertices */}
-            {Array.from({length:14},(_,i)=>{
-              const p=polar(cx,cy,185,i*360/14);
-              return <circle key={i} cx={p.x} cy={p.y} r="6"
-                             fill={T.gold} opacity=".7"
-                             style={{filter:`drop-shadow(0 0 4px ${T.gold})`}}/>;
-            })}
+            <g className="spin14-reverse">
+              <polygon
+                points={Array.from({length:14},(_,i)=>{
+                  const p = polar(cx,cy,185,i*360/14);
+                  return `${p.x.toFixed(1)},${p.y.toFixed(1)}`;
+                }).join(' ')}
+                fill="rgba(192,132,252,0.06)" stroke={T.purple}
+                strokeWidth="2.5" opacity=".85"/>
+              {/* 14-gon vertices */}
+              {Array.from({length:14},(_,i)=>{
+                const p=polar(cx,cy,185,i*360/14);
+                return <circle key={i} cx={p.x} cy={p.y} r="6"
+                               fill={T.gold} opacity=".7"
+                               className={`blink-node-${(i%3)+1}`}
+                               style={{filter:`drop-shadow(0 0 4px ${T.gold})`}}/>;
+              })}
+            </g>
 
             {/* ══════════════════════════════════════════════════════
                 CORE HUB — animated sacred geometry center
@@ -272,8 +281,9 @@ export const MasterCanvas = () => {
                   const p = polar(cx,cy,140,i*360/14);
                   return `${p.x.toFixed(1)},${p.y.toFixed(1)}`;
                 }).join(' ')}
-                fill="none" stroke={T.gold} strokeWidth="2.5"
-                strokeDasharray="4,10" opacity=".65"/>
+                fill="none" stroke={T.gold} strokeWidth="4"
+                strokeDasharray="8,8" opacity="1"
+                style={{filter:`drop-shadow(0 0 10px ${T.gold})`}}/>
             </g>
             {/* Dashed inner circle */}
             <circle cx={cx} cy={cy} r="146" fill="none"
